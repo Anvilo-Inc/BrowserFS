@@ -686,7 +686,7 @@ export class BaseFileSystem {
       fd.closeSync();
     }
   }
-  public writeFile(fname: string, data: any, encoding: string | null, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
+  public writeFile(fname: string, data: any, encoding: BufferEncoding | null, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
     // Wrap cb in file closing code.
     const oldCb = cb;
     // Get file.
@@ -711,7 +711,7 @@ export class BaseFileSystem {
       fd!.write(data, 0, data.length, 0, cb);
     });
   }
-  public writeFileSync(fname: string, data: any, encoding: string | null, flag: FileFlag, mode: number): void {
+  public writeFileSync(fname: string, data: any, encoding: BufferEncoding | null, flag: FileFlag, mode: number): void {
     // Get file.
     const fd = this.openSync(fname, flag, mode);
     try {
@@ -724,7 +724,7 @@ export class BaseFileSystem {
       fd.closeSync();
     }
   }
-  public appendFile(fname: string, data: any, encoding: string | null, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
+  public appendFile(fname: string, data: any, encoding: BufferEncoding | null, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
     // Wrap cb in file closing code.
     const oldCb = cb;
     this.open(fname, flag, mode, function(err: ApiError, fd?: File) {
@@ -742,7 +742,7 @@ export class BaseFileSystem {
       fd!.write(data, 0, data.length, null, cb);
     });
   }
-  public appendFileSync(fname: string, data: any, encoding: string | null, flag: FileFlag, mode: number): void {
+  public appendFileSync(fname: string, data: any, encoding: BufferEncoding | null, flag: FileFlag, mode: number): void {
     const fd = this.openSync(fname, flag, mode);
     try {
       if (typeof data === 'string') {

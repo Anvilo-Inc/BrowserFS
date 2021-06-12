@@ -755,10 +755,10 @@ export default class WorkerFS extends BaseFileSystem implements FileSystem {
   public readFile(fname: string, encoding: string, flag: FileFlag, cb: BFSCallback<any>): void {
     this._rpc('readFile', arguments);
   }
-  public writeFile(fname: string, data: any, encoding: string, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
+  public writeFile(fname: string, data: any, encoding: BufferEncoding, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
     this._rpc('writeFile', arguments);
   }
-  public appendFile(fname: string, data: any, encoding: string, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
+  public appendFile(fname: string, data: any, encoding: BufferEncoding, flag: FileFlag, mode: number, cb: BFSOneArgCallback): void {
     this._rpc('appendFile', arguments);
   }
   public chmod(p: string, isLchmod: boolean, mode: number, cb: Function): void {

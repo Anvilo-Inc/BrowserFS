@@ -318,7 +318,7 @@ export default class EmscriptenFileSystem extends SynchronousFileSystem {
     }
   }
 
-  public writeFileSync(p: string, data: any, encoding: string, flag: FileFlag, mode: number): void {
+  public writeFileSync(p: string, data: any, encoding: BufferEncoding, flag: FileFlag, mode: number): void {
     try {
       if (encoding) {
         data = Buffer.from(data, encoding);

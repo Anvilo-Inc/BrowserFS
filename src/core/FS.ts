@@ -777,7 +777,7 @@ export default class FS {
     let buffer: Buffer, offset: number, length: number, position: number | null = null;
     if (typeof arg2 === 'string') {
       // Signature 1: (fd, string, [position?, [encoding?]], cb?)
-      let encoding = 'utf8';
+      let encoding: BufferEncoding = 'utf8';
       switch (typeof arg3) {
         case 'function':
           // (fd, string, cb)
@@ -786,7 +786,7 @@ export default class FS {
         case 'number':
           // (fd, string, position, encoding?, cb?)
           position = arg3;
-          encoding = typeof arg4 === 'string' ? arg4 : 'utf8';
+          encoding = typeof arg4 === 'string' ? arg4 as BufferEncoding : 'utf8';
           cb = typeof arg5 === 'function' ? arg5 : cb;
           break;
         default:
@@ -838,7 +838,7 @@ export default class FS {
     if (typeof arg2 === 'string') {
       // Signature 1: (fd, string, [position?, [encoding?]])
       position = typeof arg3 === 'number' ? arg3 : null;
-      const encoding = typeof arg4 === 'string' ? arg4 : 'utf8';
+      const encoding: BufferEncoding = typeof arg4 === 'string' ? arg4 as BufferEncoding : 'utf8';
       offset = 0;
       buffer = Buffer.from(arg2, encoding);
       length = buffer.length;

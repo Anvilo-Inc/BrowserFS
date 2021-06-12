@@ -252,7 +252,7 @@ export default class HTML5FS extends BaseFileSystem implements IFileSystem {
         };
         // Loop through the entries and remove them, then call the callback
         // when they're all finished.
-        asyncEach(entries!, deleteEntry, finished);
+        asyncEach(entries!, deleteEntry as any, finished);
       }
     });
   }
